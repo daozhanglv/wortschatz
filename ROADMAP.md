@@ -13,8 +13,9 @@ This file tracks the plan. Each step is small (about 30–60 minutes) and ends w
 **Goal:** a version I can use every day for my own German studies.
 
 ### Data foundation
+
 - [x] **0.1** Project setup with Spring Boot and a `/hello` endpoint
-- [ ] **0.2** Run PostgreSQL locally with Docker Compose (`compose.yaml`) and connect to it from IntelliJ
+- [x] **0.2** Run PostgreSQL locally with Docker Compose (`compose.yaml`) and connect to it from IntelliJ
 - [ ] **0.3** Add Spring Data JPA and the PostgreSQL driver; configure the datasource
 - [ ] **0.4** `Word` entity and repository (lemma, part of speech, gender, plural, Chinese meaning, created at)
 - [ ] **0.5** REST API to create and list words (controller → service → repository, request/response DTOs)
@@ -23,11 +24,14 @@ This file tracks the plan. Each step is small (about 30–60 minutes) and ends w
 - [ ] **0.8** First integration test with Testcontainers (a real PostgreSQL in the test)
 
 ### LLM extraction
-- [ ] **0.9** LLM client: call the DeepSeek API (OpenAI-compatible) with Spring's `RestClient`; API key from an environment variable
+
+- [ ] **0.9** LLM client: call the DeepSeek API (OpenAI-compatible) with Spring's `RestClient`; API key from an
+  environment variable
 - [ ] **0.10** Prompt and JSON response format for word extraction; parse into DTOs; handle invalid responses
 - [ ] **0.11** Extraction pipeline: article → extracted words → skip words already known → save new ones
 
 ### Review
+
 - [ ] **0.12** Review state per word (ease factor, interval, due date); implement SM-2 with unit tests
 - [ ] **0.13** Review API: get today's due words, submit an answer (again / hard / good / easy)
 - [ ] **0.14** Minimal web UI: add article, word list, review session
@@ -42,7 +46,8 @@ This file tracks the plan. Each step is small (about 30–60 minutes) and ends w
 - [ ] **0.16** Database migrations with Flyway (replace `ddl-auto`)
 - [ ] **0.17** Redis: cache LLM results per word to save API calls
 - [ ] **0.18** Redis: daily review queue
-- [ ] **0.19** `Dockerfile` for the app; full `compose.yaml` (app + PostgreSQL + Redis) — `docker compose up` runs everything
+- [ ] **0.19** `Dockerfile` for the app; full `compose.yaml` (app + PostgreSQL + Redis) — `docker compose up` runs
+  everything
 - [ ] **0.20** GitHub Actions CI: build and run all tests on every push
 - [ ] **0.21** Cloze exercise: review a word using its original sentence with the word blanked out
 
