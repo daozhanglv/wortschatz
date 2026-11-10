@@ -16,7 +16,7 @@ This file tracks the plan. Each step is small (about 30–60 minutes) and ends w
 
 - [x] **0.1** Project setup with Spring Boot and a `/hello` endpoint
 - [x] **0.2** Run PostgreSQL locally with Docker Compose (`compose.yaml`) and connect to it from IntelliJ
-- [ ] **0.3** Add Spring Data JPA and the PostgreSQL driver; configure the datasource
+- [x] **0.3** Add Spring Data JPA and the PostgreSQL driver; configure the datasource
 - [ ] **0.4** `Word` entity and repository (lemma, part of speech, gender, plural, Chinese meaning, created at)
 - [ ] **0.5** REST API to create and list words (controller → service → repository, request/response DTOs)
 - [ ] **0.6** Input validation and a global error handler with consistent error responses
