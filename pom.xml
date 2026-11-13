@@ -49,7 +49,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <scope>runtime</scope> <!-- 想一想：编译时需要它吗？还是只在运行时需要？ -->
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
