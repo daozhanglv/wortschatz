@@ -29,13 +29,16 @@ This file tracks the plan. Each step is small (about 30–60 minutes) and ends w
   environment variable
 - [ ] **0.10** Prompt and JSON response format for word extraction; parse into DTOs; handle invalid responses
 - [ ] **0.11** Extraction pipeline: article → extracted words → skip words already known → save new ones
+- [ ] **0.12** Make LLM calls robust: timeout, retry on temporary failures, and log token usage for every call
+- [ ] **0.13** Extraction evaluation: a small set of articles with the words I expect to be extracted; a test
+  reports how many were found and how many extra words came back; record the result in the README
 
 ### Review
 
-- [ ] **0.12** Review state per word (ease factor, interval, due date); implement SM-2 with unit tests
-- [ ] **0.13** Review API: get today's due words, submit an answer (again / hard / good / easy)
-- [ ] **0.14** Minimal web UI: add article, word list, review session
-- [ ] **0.15** README in English: problem, features, architecture diagram, how to run
+- [ ] **0.14** Review state per word (ease factor, interval, due date); implement SM-2 with unit tests
+- [ ] **0.15** Review API: get today's due words, submit an answer (again / hard / good / easy)
+- [ ] **0.16** Minimal web UI: add article, word list, review session
+- [ ] **0.17** README in English: problem, features, architecture diagram, how to run
 
 ---
 
@@ -43,24 +46,29 @@ This file tracks the plan. Each step is small (about 30–60 minutes) and ends w
 
 **Goal:** a project that runs with one command and is checked automatically.
 
-- [ ] **0.16** Database migrations with Flyway (replace `ddl-auto`)
-- [ ] **0.17** Redis: cache LLM results per word to save API calls
-- [ ] **0.18** Redis: daily review queue
-- [ ] **0.19** `Dockerfile` for the app; full `compose.yaml` (app + PostgreSQL + Redis) — `docker compose up` runs
+- [ ] **0.18** Database migrations with Flyway (replace `ddl-auto`)
+- [ ] **0.19** Redis: cache LLM results per word to save API calls
+- [ ] **0.20** Redis: daily review queue
+- [ ] **0.21** `Dockerfile` for the app; full `compose.yaml` (app + PostgreSQL + Redis) — `docker compose up` runs
   everything
-- [ ] **0.20** GitHub Actions CI: build and run all tests on every push
-- [ ] **0.21** Cloze exercise: review a word using its original sentence with the word blanked out
+- [ ] **0.22** GitHub Actions CI: build and run all tests on every push
+- [ ] **0.23** API documentation with OpenAPI and Swagger UI, so the endpoints can be tried in the browser
+- [ ] **0.24** Health check and basic metrics with Spring Boot Actuator
+- [ ] **0.25** Cloze exercise: review a word using its original sentence with the word blanked out
 
 ---
 
 ## v0.3 — Showcase
 
-**Goal:** a version I can show in applications and interviews.
+**Goal:** a version anyone can open in the browser, and that I can show in applications and interviews.
 
-- [ ] **0.22** User accounts and login (Spring Security)
-- [ ] **0.23** Learning statistics (words learned, review accuracy, hardest words)
-- [ ] **0.24** Screenshots / demo GIF and a short German introduction in the README
-- [ ] **0.25** Deploy to a cloud server (optional: local Kubernetes with kind)
+- [ ] **0.26** User accounts and login (Spring Security)
+- [ ] **0.27** Daily limit on LLM extraction per user (protects the API budget once the app is public)
+- [ ] **0.28** Learning statistics (words learned, review accuracy, hardest words)
+- [ ] **0.29** Deploy to a cloud server with HTTPS
+- [ ] **0.30** Continuous deployment: GitHub Actions deploys every push to `main` after the tests pass
+- [ ] **0.31** Screenshots / demo GIF, a link to the live demo, and a short German introduction in the README
+- [ ] **0.32** Optional: run the same setup on a local Kubernetes cluster with kind
 
 ---
 
