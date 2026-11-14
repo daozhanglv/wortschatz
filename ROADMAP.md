@@ -18,7 +18,7 @@ This file tracks the plan. Each step is small (about 30–60 minutes) and ends w
 - [x] **0.2** Run PostgreSQL locally with Docker Compose (`compose.yaml`) and connect to it from IntelliJ
 - [x] **0.3** Add Spring Data JPA and the PostgreSQL driver; configure the datasource
 - [x] **0.4** `Word` entity and repository (lemma, part of speech, gender, plural, meaning, created at)
-- [ ] **0.5** REST API to create and list words (controller → service → repository, request/response DTOs)
+- [x] **0.5** REST API to create and list words (controller → service → repository, request/response DTOs)
 - [ ] **0.6** Input validation and a global error handler with consistent error responses
 - [ ] **0.7** `Article` entity: save pasted German text; store the example sentence each word came from
 - [ ] **0.8** First integration test with Testcontainers (a real PostgreSQL in the test)
