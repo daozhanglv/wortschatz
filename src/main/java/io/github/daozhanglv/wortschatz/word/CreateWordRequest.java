@@ -8,7 +8,7 @@ public record CreateWordRequest(
         @NotBlank @Size(max = 100) String lemma,
         @NotNull PartOfSpeech partOfSpeech,
         Gender gender,
-        String plural,
-        @NotBlank String meaning
+        @Size(max = 255) String plural,
+        @NotBlank @Size(max = 255) String meaning
 ) {
 }
