@@ -9,7 +9,9 @@ public record WordResponse(
         Gender gender,
         String plural,
         String meaning,
-        Instant createdAt
+        Instant createdAt,
+        String exampleSentence,
+        Long articleId
 ) {
     public static WordResponse from(Word word) {
         return new WordResponse(
@@ -19,7 +21,9 @@ public record WordResponse(
                 word.getGender(),
                 word.getPlural(),
                 word.getMeaning(),
-                word.getCreatedAt()
+                word.getCreatedAt(),
+                word.getExampleSentence(),
+                word.getArticle() == null ? null : word.getArticle().getId()
         );
     }
 }

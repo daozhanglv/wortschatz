@@ -1,5 +1,6 @@
 package io.github.daozhanglv.wortschatz.word;
 
+import io.github.daozhanglv.wortschatz.article.Article;
 import jakarta.persistence.*;
 
 import java.time.Instant;
@@ -27,6 +28,13 @@ public class Word {
 
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
+
+    @Column(columnDefinition = "text")
+    private String exampleSentence;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "article_id")
+    private Article article;
 
     protected Word() {
     }
@@ -70,5 +78,13 @@ public class Word {
 
     public Instant getCreatedAt() {
         return createdAt;
+    }
+
+    public String getExampleSentence() {
+        return exampleSentence;
+    }
+
+    public Article getArticle() {
+        return article;
     }
 }
