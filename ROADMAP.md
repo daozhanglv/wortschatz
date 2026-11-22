@@ -22,7 +22,7 @@ This file tracks the plan. Each step is small (about 30–60 minutes) and ends w
 - [x] **0.6** Input validation and a global error handler with consistent error responses
 - [x] **0.7** `Article` entity: save pasted German text; store the example sentence each word came from
 - [x] **0.8** First integration test with Testcontainers (a real PostgreSQL in the test)
-- [ ] **0.22** GitHub Actions CI: build and run all tests on every push
+- [x] **0.22** GitHub Actions CI: build and run all tests on every push
 
 ### LLM extraction
 
