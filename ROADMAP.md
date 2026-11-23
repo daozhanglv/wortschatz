@@ -26,14 +26,15 @@ This file tracks the plan. Each step is small (about 30–60 minutes) and ends w
 
 ### LLM extraction
 
-- [ ] Choose 3–5 German texts I have read. For each one, mark the words I want to learn and the words I already know.
+- [x] Choose 3–5 German texts I have read. For each one, mark the words I want to learn and the words I already know.
   Reserve one text for the final evaluation in 0.13 and use the others to tune the prompt.
 - [ ] **0.9** LLM client: call the DeepSeek API (OpenAI-compatible) with Spring's `RestClient`; API key from an
   environment variable
 - [ ] **0.10** Prompt and JSON response format for word extraction; parse into DTOs; handle invalid responses
 - [ ] **0.11** Extraction pipeline: article → extracted words → skip words already known → save new ones
-  - Test that extracting the same article twice leaves the word list and examples unchanged.
-  - When a word on the list appears in another article, keep its new example sentence and link it to the existing word.
+    - Test that extracting the same article twice leaves the word list and examples unchanged.
+    - When a word on the list appears in another article, keep its new example sentence and link it to the existing
+      word.
 - [ ] **0.12** Make LLM calls robust: timeout, retry on temporary failures, and log token usage for every call
 - [ ] **0.13** Run an automated evaluation against the annotations, including the reserved text after prompt tuning.
   Report expected words found, missed words, and extra words for each text. Record the results in the README.
@@ -55,9 +56,11 @@ any words that are due. Record one difficulty I encountered and the change I mad
 **Goal:** a project that runs with one command and is checked automatically.
 
 - [ ] **0.18** Database migrations with Flyway (replace `ddl-auto`)
-- [ ] **0.19** Optional: if logs show repeated equivalent LLM requests, cache results in Redis using a key that includes the input context.
+- [ ] **0.19** Optional: if logs show repeated equivalent LLM requests, cache results in Redis using a key that includes
+  the input context.
 - [ ] **0.20** Optional: if the PostgreSQL due-date query becomes a measured bottleneck, evaluate a Redis review queue.
-- [ ] **0.21** `Dockerfile` for the app; full `compose.yaml` (app + PostgreSQL, plus Redis if used) — `docker compose up` runs
+- [ ] **0.21** `Dockerfile` for the app; full `compose.yaml` (app + PostgreSQL, plus Redis if used) —
+  `docker compose up` runs
   everything
 - [ ] **0.23** API documentation with OpenAPI and Swagger UI, so the endpoints can be tried in the browser
 - [ ] **0.24** Health check and basic metrics with Spring Boot Actuator
