@@ -30,11 +30,22 @@ This file tracks the plan. Each step is small (about 30–60 minutes) and ends w
   Reserve one text for the final evaluation in 0.13 and use the others to tune the prompt.
 - [x] **0.9** LLM client: call the DeepSeek API (OpenAI-compatible) with Spring's `RestClient`; API key from an
   environment variable
-- [ ] **0.10** Prompt and JSON response format for word extraction; parse into DTOs; handle invalid responses
-- [ ] **0.11** Extraction pipeline: article → extracted words → skip words already known → save new ones
-    - Test that extracting the same article twice leaves the word list and examples unchanged.
-    - When a word on the list appears in another article, keep its new example sentence and link it to the existing
-      word.
+- [ ] **0.10a** Pass a sentence from either prompt-tuning text to the DeepSeek client. Ask for a word worth
+  learning and return the assistant's reply text. Try a second sentence without editing the client.
+- [ ] **0.10b** Design a JSON format for candidate words. Decide how it should represent a noun and a
+  multiword expression. Use fixed JSON samples to test that Java parses valid candidates into DTOs and
+  reports an error for a malformed reply. These tests run without an API key.
+- [ ] **0.10c** Write an extraction prompt that asks for that format and the original sentence for each
+  candidate. Run it on one prompt-tuning article, parse the reply, and compare it with my annotations.
+- [ ] **0.11a** Let the learner choose “Learn” or “Already known” for a candidate and save the choice.
+  Test both outcomes. Marking *der Haushalt* as known skips it in later suggestions. Choosing to learn
+  *das Mietrecht* puts it on the list of words to review.
+- [ ] **0.11b** Store each example sentence with its source article so a word can have several examples.
+  Test with *das Mietrecht* in two articles. Saving both examples should yield one word and two examples,
+  each linked to the article it came from.
+- [ ] **0.11c** Connect extraction to the saved vocabulary. Show new candidates for a decision, skip known
+  words, and attach new examples to words already being learned. Process the first article from 0.11b
+  again with the same extraction result and verify that there is still one word with two examples.
 - [ ] **0.12** Make LLM calls robust: timeout, retry on temporary failures, and log token usage for every call
 - [ ] **0.13** Run an automated evaluation against the annotations, including the reserved text after prompt tuning.
   Report expected words found, missed words, and extra words for each text. Record the results in the README.
@@ -43,7 +54,8 @@ This file tracks the plan. Each step is small (about 30–60 minutes) and ends w
 
 - [ ] **0.14** Review state per word (ease factor, interval, due date); implement SM-2 with unit tests
 - [ ] **0.15** Review API: query PostgreSQL by due date for today's words, submit an answer (again / hard / good / easy)
-- [ ] **0.16** Minimal web UI: add article, word list, review session
+- [ ] **0.16** Minimal web UI: add an article, choose “Learn” or “Already known” for its candidates,
+  view the word list, and review due words.
 - [ ] **0.17** README in English: problem, features, architecture diagram, how to run
 
 **v0.1 completion check:** Use WortSchatz for seven consecutive days to read my own German texts and review
@@ -55,7 +67,9 @@ any words that are due. Record one difficulty I encountered and the change I mad
 
 **Goal:** a project that runs with one command and is checked automatically.
 
-- [ ] **0.18** Database migrations with Flyway (replace `ddl-auto`)
+- [ ] **0.18** Database migrations with Flyway (replace `ddl-auto`). If the database already contains
+  study data I want to keep when I start 0.11, do this step before changing the schema and verify that
+  existing words and examples survive the migration.
 - [ ] **0.19** Optional: if logs show repeated equivalent LLM requests, cache results in Redis using a key that includes
   the input context.
 - [ ] **0.20** Optional: if the PostgreSQL due-date query becomes a measured bottleneck, evaluate a Redis review queue.
