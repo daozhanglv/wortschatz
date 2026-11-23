@@ -28,7 +28,7 @@ This file tracks the plan. Each step is small (about 30–60 minutes) and ends w
 
 - [x] Choose 3–5 German texts I have read. For each one, mark the words I want to learn and the words I already know.
   Reserve one text for the final evaluation in 0.13 and use the others to tune the prompt.
-- [ ] **0.9** LLM client: call the DeepSeek API (OpenAI-compatible) with Spring's `RestClient`; API key from an
+- [x] **0.9** LLM client: call the DeepSeek API (OpenAI-compatible) with Spring's `RestClient`; API key from an
   environment variable
 - [ ] **0.10** Prompt and JSON response format for word extraction; parse into DTOs; handle invalid responses
 - [ ] **0.11** Extraction pipeline: article → extracted words → skip words already known → save new ones
