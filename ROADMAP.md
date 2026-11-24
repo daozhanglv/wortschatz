@@ -30,7 +30,7 @@ This file tracks the plan. Each step is small (about 30–60 minutes) and ends w
   Reserve one text for the final evaluation in 0.13 and use the others to tune the prompt.
 - [x] **0.9** LLM client: call the DeepSeek API (OpenAI-compatible) with Spring's `RestClient`; API key from an
   environment variable
-- [ ] **0.10a** Refactor `DeepSeekClient` to use typed request/response DTOs and externalized config (`model`, `baseUrl`).
+- [x] **0.10a** Refactor `DeepSeekClient` to use typed request/response DTOs and externalized config (`model`, `baseUrl`).
   Pass a sentence from either prompt-tuning text, ask for a word worth learning, and return the assistant's reply text.
   Try a second sentence without editing the client.
 - [ ] **0.10b** Design a JSON format for candidate words, including a canonical deduplication rule (how nouns, articles,
